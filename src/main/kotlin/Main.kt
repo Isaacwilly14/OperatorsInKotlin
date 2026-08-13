@@ -7,7 +7,7 @@ println("X + Y =  ${X +Y}")
 println("X * Y = ${X * Y}")
 println("X - Y  = ${X - Y}")
 println("X / Y  = ${X / Y}")
-
+println("X / Y  = ${X % Y}")
 
 
 
