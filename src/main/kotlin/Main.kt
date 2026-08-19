@@ -226,10 +226,113 @@ fun main(args: Array<String>) {
 //
 //    }
 
-    var number = 10
+//    var number = 10
+//
+//    do {
+//        println(number)
+//    } while (number <10)
 
-    do {
-        println(number)
-    } while (number <10)
+//================CONTINUE AND BREAK KEYWORDS IN LOOPS================================
+//    var number = 0
+//
+//    while (number < 10) {
+//        number++
+//        if (number >2 && number <8) {
+//            continue
+//    }
+//    println(number)
 
+// ========RANGE IN LOOPS===============================================================
+//    var number = 0
+//
+//    while (number < 10) {
+//        number++
+//
+//        if (number in 3..7){
+//            continue
+//        }
+//        println(number)
+//    }
+
+//var number = 0
+//
+//while (number < 10) {
+//    number++
+//
+//    if (number == 7) {
+//        break
+//    }
+//    println(number)
+//    }
+//    for (i in 0..10){
+//        if (i in 3..8){
+//            continue
+//        }
+//        println(i)
+//    }
+//===INNER LOOP========
+//var number = 0
+//
+//while (number < 5) {
+//    number++
+//    println(number)
+//
+//    var i = 0
+//
+//    while (i < 5) {
+//        i++
+//        println("***$i")
+//    }
+//}
+
+// ================================CHALLENGE===================== FINDING EVEN NUMBER
+//
+//    var number = 1
+//    val lastNumber = 20
+//   var evenNumberCounter = 0
+//
+//    while (number <= lastNumber) {
+//        number++
+//
+//    if (!isEvenNumber(number)) {
+//        continue
+//    }
+//    evenNumberCounter++
+//        print(number)
+//    }
+//
+//    println(" Now we're looping using the FOR loop")
+//    evenNumberCounter = 0
+//    for (i in 1..20) {
+//        if (i % 2 == 0) {
+//            continue
+//        }
+//        evenNumberCounter++
+//        print(i)
+//    }
+//    println(" Total number of even numbers found = $evenNumberCounter")
+//    println("Total number of even numbers found - using for loop - are $evenNumberCounter")
+//}
+//fun isEvenNumber(number: Int): Boolean {
+//    if ((number % 2) == 0) {
+//        return true
+//    }else {
+//        return false  //Is possible Complete the challenge without using a function.
+//}
+
+//==========================ARRAYS===================================================================
+
+    val names = arrayOf("John", "Peter", "Isaac","Megan")
+    val numbers = arrayOf<Any>(4, 5, 6, 7, 4, "Name 1", "a")
+
+    names[0] = "Isaac"
+    println("The First element on a list is ${names[0]}")
+    println("The the size of array is ${names.size}")
+
+//    for (name in names) {
+//        println(name)
+//    }
+    for (i in numbers) {
+        println(i)
+    }
 }
