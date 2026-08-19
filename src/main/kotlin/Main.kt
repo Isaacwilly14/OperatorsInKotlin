@@ -189,8 +189,47 @@ fun main(args: Array<String>) {
 //    return result
 //}
 
-    sum(1, 4, 6, 7, 8, 9, 5, 7, 6)
-}
-fun sum(vararg numbers: Int) {
-    numbers.forEach { println(it) }
+//    sum(1, 4, 6, 7, 8, 9, 5, 7, 6)
+//}
+//fun sum(vararg numbers: Int) {
+//    numbers.forEach { println(it) }
+//}
+
+// ============  FOR LOOPS ====================================
+
+//    for (i in 1..10){
+//        println("i = $i")
+//    }  /This prints all the numbers in the list
+
+//for (i in 1 until 10){
+//    println(i)
+//} /This doesn't include the upper bound.
+
+//    for (i in 10 downTo 1){
+//        println(i) // This counts backwards
+//    }
+
+//    for (i in 1 until 10 step 2) {
+//        println(i) //This skips a number and goes to the second after the previous step.
+//    }
+
+//for (i in 1..10){
+//    println(i)
+//}
+
+// ===============WHILE LOOP===========================
+//    var number = 0
+//
+//    while (number < 10){
+//        println(number)
+//        number++
+//
+//    }
+
+    var number = 10
+
+    do {
+        println(number)
+    } while (number <10)
+
 }
