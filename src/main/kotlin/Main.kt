@@ -322,17 +322,74 @@ fun main(args: Array<String>) {
 
 //==========================ARRAYS===================================================================
 
-    val names = arrayOf("John", "Peter", "Isaac","Megan")
-    val numbers = arrayOf<Any>(4, 5, 6, 7, 4, "Name 1", "a")
-
-    names[0] = "Isaac"
-    println("The First element on a list is ${names[0]}")
-    println("The the size of array is ${names.size}")
-
-//    for (name in names) {
-//        println(name)
+//    val names = arrayOf("John", "Peter", "Isaac","Megan")
+//    val mixedElements = arrayOf<Any>(4, 5, 6, 7, 4, "Name 1", "a")
+//
+//    names[0] = "Isaac"
+//    println("The First element on a list is ${names[0]}")
+//    println("The size of array is ${names.size}")
+//
+////    for (name in names) {
+////        println(name)
+////    }
+//    for (i in mixedElements) {
+//        if (i is Int) {
+//            println(i)
+//        }
 //    }
-    for (i in numbers) {
-        println(i)
-    }
+
+//======================CHALLENGE TWO======================================================
+//    val max = findMax(arrayOf(4,6,7,4,3,6))
+//    val min = findMin(arrayOf(4,7,9,20,7,100))
+//    println("Max value is $max")
+//    println("Min value is $min")
+//
+//}
+//fun findMax(numbers: Array<Int>): Int {
+//    var max = numbers[0]
+//
+//    for (number in numbers) {
+//        if (number > max) {
+//            max = number
+//        }
+//    }
+//    return max
+//}
+//
+//fun findMin(numbers: Array<Int>): Int {
+//    var min = numbers[0]
+//
+//    for (number in numbers) {
+//        if (number < min) {
+//            min = number
+//        }
+//    }
+//    return min
+
+//Combining Numbers
+
+    val max = findMinAndMax(arrayOf(20,40,50,60,100), true)
+    val min = findMinAndMax(arrayOf(20,40,50,60,100), false)
+    println("The max value is = $max")
+    println("The min value is = $min")
 }
+
+fun findMinAndMax(numbers: Array<Int>,searchMax: Boolean): Int {
+    var max :Int = numbers[0]
+    var min :Int = max
+    if (searchMax) {
+        for (number in numbers) {
+            if (number > max) {
+                max = number
+            }
+        }
+        return max
+    }else {
+    for (number in numbers){
+        if (number < min) {
+        min = number
+        }
+    }
+        return min
+    }
+    }
