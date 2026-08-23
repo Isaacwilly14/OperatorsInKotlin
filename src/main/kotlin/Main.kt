@@ -648,24 +648,115 @@ fun main(args: Array<String>) {
 //
 //    }
 
-//=============== A single
+//=============== A single Return
 
-    val instance :Database? = Database.getInstance()
-    println(instance)
+    //    val instance :Database? = Database.getInstance()
+//    println(instance)
+//}
+//class Database private constructor() {
+//
+//    companion object {
+//        private var instance: Database? = null
+//
+//        fun getInstance(): Database? {
+//            if (instance == null) {
+//                instance = Database()
+//            }
+//
+//            return instance
+//        }
+//    }
+//}
+// Now Using the Object Keyword (The shorter way.
+//println(Database)
+//
+//}
+//    object Database {
+//        init{
+//            println("Creating Database")
+//    }
+
+//====================================LAZY INITIALIZATION==========================================================
+//    val user1 = User("Isaac", "Tumusiime", 32)
+//    val user2 by lazy {
+//        User("User1","lastName", 0 )
+//    }
+//
+//    println(user2.firstName)
+//}
+//
+//class User(var firstName: String, var lastName: String, var age: Int) {
+//    init{
+//        println("User: $firstName was created")
+//    }
+//    }
+
+//============ENUM CLASSES
+
+//    println(Direction.WEST)
+//    println(Direction.EAST)
+//    println(Direction.NORTH)
+//    println(Direction.SOUTH)
+//}
+//enum class Direction {
+//    NORTH,
+//    SOUTH, //All should be in uppercase
+//    EAST,
+//    WEST
+
+//USING CONSTRUCTOR==============================================================================
+
+//=====================LOOPING THROUGH OUR ENUMS==================================================
+//    for (direction in Direction.values()) {
+//    println("$direction")
+//    }
+
+//==============ACCESSING THE ARGUMENTS PASSED IN THE EMUNS
+//    println(Direction.NORTH.direction)
+//    println(Direction.NORTH.distance)
+//    println(Direction.NORTH.name)
+//
+//    Direction.WEST.printData()
+
+// USING "WHEN" IN ENUMS
+
+    //val direction = Direction.EAST
+    //When value is from the Database or user input it is advisable to use the Direction.value like below
+
+//    val direction = Direction.valueOf("east".uppercase())
+//
+//    when (direction) {
+//        Direction.EAST -> println("The direction is East")
+//        Direction.WEST -> println("The direction is West")
+//        Direction.NORTH -> println("The direction is North")
+//        Direction.SOUTH -> println("The direction is South")
+//    }
+//}
+//
+//enum class Direction(var direction: String, var distance: Int) {
+//    NORTH("north", 10),
+//    SOUTH("south", 20), //All should be in uppercase
+//    EAST("east", 15),
+//    WEST("west", 40); //Need to provide a semicolon to last element when using a function
+//
+//    fun printData() {
+//        println("Direction = $distance and Distance = $direction")
+//    }
+
+//==================================== INNER CLASSES ===============================================================
+//    val listView = ListView(arrayOf("Name 1", "Name 2", "Name 3", "Name 4"))
+//
+//    listView.ListViewItem().displayItem(2)
+//}
+//
+//class ListView(val items: Array<String>) {
+//
+//    inner class ListViewItem() {
+//
+//        fun displayItem(position: Int) {
+//            println(items[position])
+//        }
+//    }
+
+//===================================CHALLENGE======================================================================
 }
-class Database private constructor() {
-
-    companion object {
-        private var instance: Database? = null
-
-        fun getInstance(): Database? {
-            if (instance == null) {
-                instance = Database()
-            }
-
-            return instance
-        }
-    }
-}
-
-
