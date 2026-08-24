@@ -1,4 +1,4 @@
-fun main(args: Array<String>) {
+//fun main(args: Array<String>) {
 
 //    var X = 5
 //    var Y = 3
@@ -759,4 +759,88 @@ fun main(args: Array<String>) {
 //    }
 
 //===================================CHALLENGE======================================================================
+
+//package com.example.main
+//
+//fun main() {
+//    val isaacAccount = Account("Isaac")
+//    isaacAccount.deposit(1000)
+//    isaacAccount.withdraw(500)
+//    isaacAccount.deposit(-20)
+//    isaacAccount.withdraw(-100)
+//
+//    val balance = isaacAccount.calculateBalance()
+//    println("Balance is $balance")
+//}
+//
+//class Account(val accountName: String) {
+//    var balance = 0
+//    var transactions = mutableListOf<Int>()
+//
+//    fun deposit(amount: Int) {
+//        if (amount > 0) {
+//            transactions.add(amount)
+//            balance += amount
+//            println("$amount Deposited. Balance is now ${this.balance}")
+//        } else {
+//            println("Cannot deposit negative sums")
+//        }
+//    }
+//    fun withdraw(withdrawal: Int) {
+//        if (-withdrawal < 0) {
+//            transactions.add(-withdrawal)
+//            this.balance += -withdrawal
+//            println("$withdrawal. Withdrawn. Balance is now ${this.balance}")
+//        } else {
+//            println("Cannot withdraw negative sums")
+//        }
+//    }
+//
+//    fun calculateBalance(): Int{
+//        this.balance = 0
+//        for (transaction in transactions){
+//            this.balance += transaction
+//        }
+//        return this.balance
+//    }
+//====================================INHERITANCE================================================================
+
+fun main(args: Array<String>) {
+   val car = Car("BMW", "RED", 1, 4)
+   val plane = Plane("Boeing", "WHITE and BLUE", 4, 4)
+
+    car.move()
+    car.stop()
+
+    plane.move()
+    plane.stop()
+
+}
+
+open class Vehicle(val name: String, val color: String){
+   open fun move() { //OVERRIDING THE METHOD MARK WITH OPEN
+        println("$name is moving")
+    }
+
+    open fun stop() {
+        println("$name is stopped")
+    }
+}
+
+class Car(name: String, color: String, val engines: Int, val doors: Int): Vehicle(name, color) {
+
+
+}
+
+class Plane(name: String, color: String, val engines: Int, val doors: Int):Vehicle(name, color) {
+
+    override fun move() {
+        flying()
+        super.move()
+    }
+
+    fun flying() {
+        println("The plane is flying")
+    }
+
 }
