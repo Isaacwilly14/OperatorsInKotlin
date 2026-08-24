@@ -805,42 +805,105 @@
 //    }
 //====================================INHERITANCE================================================================
 
+//fun main(args: Array<String>) {
+//   val car = Car("BMW", "RED", 1, 4)
+//   val plane = Plane("Boeing", "WHITE and BLUE", 4, 4)
+//
+//    car.move()
+//    car.stop()
+//
+//    plane.move()
+//    plane.stop()
+//
+//}
+//
+//open class Vehicle(val name: String, val color: String){
+//   open fun move() { //OVERRIDING THE METHOD MARK WITH OPEN
+//        println("$name is moving")
+//    }
+//
+//    open fun stop() {
+//        println("$name is stopped")
+//    }
+//}
+//
+//class Car(name: String, color: String, val engines: Int, val doors: Int): Vehicle(name, color) {
+//
+//
+//}
+//
+//class Plane(name: String, color: String, val engines: Int, val doors: Int):Vehicle(name, color) {
+//
+//    override fun move() {
+//        flying()
+//        super.move()
+//    }
+//
+//    fun flying() {
+//        println("The plane is flying")
+//    }
+//
+//}
+
+//=================================SEALED CLASSES===========================================================
+
+//fun main(){
+//    val success = Result.Success("SUCCESS!")
+//    val error = Result.Error("FAILED!")
+//    val progress = Result.Progress("PROGRESS!")
+//
+//    getData(progress)
+//
+//}
+//fun getData(result: Result) {
+//    when(result) {
+//        is Result.Error -> result.showMessage()
+//        is Result.Success -> result.showMessage()
+//        is Result.Progress -> result.showMessage()
+//
+//    }
+//
+//}
+//
+//sealed class Result (val message: String){
+//    fun showMessage(){
+//        println("Result: $message")
+//    }
+//    class Success(message: String) : Result(message) //INHERITING
+//    class Error(message: String) : Result(message)
+//    class Progress(message: String) : Result(message)
+//}
+
+//========================================ABSTRACT CLASSES================================================
+
+//fun main(args: Array<String>) {
+//
+//
+//}
+//
+//abstract class Vehicle {
+//
+//    abstract fun move()
+//
+//    abstract fun stop()
+//}
+//
+//class Car(var name: String, var color: String, val engines: Int, val doors: Int): Vehicle() {
+//
+//    override fun move() {
+//
+//    }
+//    override fun stop() {
+//        //They're similar to interfaces. To research more about Interfaces.
+//    }  //Abstract classes are used in cases when you want to return the data from the database with API
+//}       //but don't want to provide the code the API does the hard work and others, to research more.
+
+//==================DATA CLASSES=======================================================================
+
 fun main(args: Array<String>) {
-   val car = Car("BMW", "RED", 1, 4)
-   val plane = Plane("Boeing", "WHITE and BLUE", 4, 4)
+    val name1 = "Isaac"
+    val name2 = "Isaac"  //Structural Equality   //Referential Equality
 
-    car.move()
-    car.stop()
-
-    plane.move()
-    plane.stop()
-
-}
-
-open class Vehicle(val name: String, val color: String){
-   open fun move() { //OVERRIDING THE METHOD MARK WITH OPEN
-        println("$name is moving")
-    }
-
-    open fun stop() {
-        println("$name is stopped")
-    }
-}
-
-class Car(name: String, color: String, val engines: Int, val doors: Int): Vehicle(name, color) {
-
-
-}
-
-class Plane(name: String, color: String, val engines: Int, val doors: Int):Vehicle(name, color) {
-
-    override fun move() {
-        flying()
-        super.move()
-    }
-
-    fun flying() {
-        println("The plane is flying")
-    }
+    println(name1 == name2)
 
 }
