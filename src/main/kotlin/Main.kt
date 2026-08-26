@@ -1,3 +1,6 @@
+import kotlin.properties.ReadWriteProperty
+import kotlin.reflect.KProperty
+
 //fun main(args: Array<String>) {
 
 //    var X = 5
@@ -900,10 +903,339 @@
 
 //==================DATA CLASSES=======================================================================
 
+//fun main(args: Array<String>) {
+////    val name1 = "Isaac"
+////    val name2 = "Isaac"  //Structural Equality   //Referential Equality
+////
+////    println(name1 == name2)
+//
+//    val user1 = User("Isaac", "Tumusiime", 31)
+//    val user2 = User("Isaac", "Tumusiime", 31)
+//
+//    println(user1 == user2)
+////    println(user1.equals(user2)) //Similar to the above.
+//}
+//
+//class User(var firstName: String, var lastName: String, var age: Int ) {
+//// data : You can just use data keyword and eliminate other code
+//    override fun equals(other: Any?): Boolean {
+//        if (this === other) {
+//            return true
+//        }
+//        if (other is User) {
+//
+//            return this.firstName == other.firstName
+//                    && this.lastName == other.lastName
+//                    && this.age == other.age
+//        }
+//
+//        return false
+//    }
+//
+//    override fun hashCode(): Int {
+//        return 0  //You can implement this for code performance if you want. If you override equal.
+//    }
+//}
+
+//==================================INTERFACES===================================================================
+
+//fun main (args: Array<String>) {
+//
+//
+//}
+//
+//interface Engine{
+//    fun startEngine()
+//}
+//
+//class Car(val name: String, val color: String): Engine{
+//    override fun startEngine() {
+//        println("The Car is starting the Engine")
+//    }
+//}
+//
+//class Truck(val name: String, val color: String): Engine{
+//    override fun startEngine() {
+//        println("The Truck is starting the Engine")
+//    }
+//}
+//
+//class Plane(val name: String, val color: String): Engine{
+//    override fun startEngine() {
+//        println("The Plane is starting the Engine")
+//    }
+//}
+//
+//class Tesla(val name: String, val color: String): Engine{
+//    override fun startEngine() {
+//        println("Tesla is starting the Engine")
+//    }
+//}
+
+//==========OBJECT EXPRESSION============ANONYMOUS CLASS/OBJECTS================
+
+//fun main(args: Array<String>) {
+//
+//   val loginButton = Button("Login", 1232,object : OnClickListener {
+//       override fun onClick() {
+//          // Login the user
+//       }
+//   })
+//    val signUpButton = Button("Sign Up", 1232,object : OnClickListener {
+//        override fun onClick() {
+//            // Sign up the user
+//        }
+//
+//    })
+//}
+//class Button(val text: String, val id: Int, onClickListener: OnClickListener)
+//
+//class ClickListener() : OnClickListener {
+//    override fun onClick() {
+//
+//    }
+//}
+//interface OnClickListener {
+//    fun onClick()
+//}
+
+//===========================DELEGATION========================================================================
+//fun main(args: Array<String>) {
+//
+//
+//}
+//
+//class App : A by FirstDelegate(), B by SecondDelegate() {
+//    override fun print() {
+//
+//    }
+//
+//    override fun print2() {
+//
+//    }
+//}
+//
+//interface A {
+//    fun print()
+//}
+//
+//interface B {
+//    fun print2()
+//}
+//
+//open class FirstDelegate : A {
+//    override fun print() {
+//
+//    }
+//}
+//
+//open class SecondDelegate : B {
+//    override fun print2() {
+//
+//    }
+//}
+
+//=================================DELEGATION WITH PROPERTIES=======================================================
+
+//fun main() {
+//
+//    val user = User()
+//
+//    with(user) {
+//        firstName = "Isaac"
+//        lastName = "Tumusiime"
+//    }
+//
+//    with(user) {
+//        println(firstName)
+//        println(lastName)
+//    }
+//}
+//
+//class User {
+//    var firstName: String by FormatDelegate()
+//    var lastName: String by FormatDelegate()
+//}
+//
+//class FormatDelegate : ReadWriteProperty<Any?, String> {
+//
+//    private var formattedString: String = ""
+//
+//    override fun getValue(
+//        thisRef: Any?,
+//        property: KProperty<*>
+//    ): String {
+//        return formattedString
+//    }
+//
+//    override fun setValue(
+//        thisRef: Any?,
+//        property: KProperty<*>,
+//        value: String
+//    ) {
+//        formattedString = value.lowercase()
+//    }
+//}
+
+//=====================COLLECTIONS==========================================================
+
+//=====Group Of Objects Store together in the same variable.
+
+//fun main(args: Array<String>) {
+//
+//    val names = listOf<String>("Name 1", "Name 2", "Name 3") //Imutable list.
+//
+//    println(names[0])
+//
+//}
+
+//fun main(args: Array<String>) {
+//
+//    val names = mutableListOf<String>("Name 1", "Name 2", "Name 3","Name 1") //Mutable list.
+//
+//    names.add("Name 4")
+//    names.removeAt(1)
+//    names.remove("Name 3")
+//
+//    names.forEach {println(it)}
+//}
+
+//fun main(args: Array<String>) {
+//
+//    val names = setOf<String>("Name 1", "Name 2", "Name 3","Name 1") //Set. Immutable
+//
+//
+//    names.forEach {println(it)}
+//}
+
+//fun main(args: Array<String>) {
+//    val user1 = User("Name1")
+//    val user2 = User("Name2")
+//    val user3 = User("Name3")
+//    val user4 = User("Name4")
+//    val user5 = User("Name5")
+//    val user6 = User("Isaac")
+//    val user7 = User("Isaac")
+//
+//    val names = mutableSetOf(user1, user2, user3, user4, user5, user6, user7) //Set. Mutable
+//
+//
+//    names.forEach {println(it.name)}
+//}
+//data class User (val name: String) { // data removes duplicates
+//
+//}
+
+//=============================MAPS======================== To store Key value Pairs.
+
+//fun main (args: Array<String>) {
+//    val users = mapOf<Int, String>(1 to "Isaac", 2 to "John", 3 to "Doe") //Immutable
+//
+//    println(users[2])
+//
+//}
+
+//fun main (args: Array<String>) {
+//    val users = mutableMapOf<Int, String>(1 to "Isaac", 2 to "John", 3 to "Doe") //Keys you
+//    users[5] = "Vladimir"
+//    users.remove(2)
+//    users.forEach { t, u -> //You can have duplicates, you can add or remove elements
+//        println("$t and $u")
+//
+//    }
+//}
+
+//============Flatten Function
+//fun main() {
+//    val numbers = listOf("one", "two", "three", "four", "five", "six")
+//    println(numbers.associateWith{it.length})
+//    println(numbers.associateBy { it.first().uppercase()})
+//    println(numbers.associateBy(keySelector = {it.first().uppercase()}, valueTransform = {it.length}))
+//
+//    //Flatten
+//    val numbersSets = arrayOf(arrayOf(1, 2, 3), arrayOf(4, 5, 6), arrayOf(7, 8, 9))
+//    println(numbersSets[2][2])
+//}
+//===========================================================================================================
+//fun main() {
+//    val numbers = listOf("one", "two", "three", "four", "five", "six")
+//    println(numbers.associateWith{it.length})
+//    println(numbers.associateBy { it.first().uppercase()})
+//    println(numbers.associateBy(keySelector = {it.first().uppercase()}, valueTransform = {it.length}))
+//
+//    //Flatten
+//    val numbersSets = listOf(setOf(1, 2, 3), setOf(4, 5, 6), setOf(7, 8, 9))
+////  for (numbers in numbersSets) {
+////      for (number in numbers){
+////          println(number)
+////      }
+////      println("\n")
+////  }
+//    //Combining it to a single array
+//    val numbersFlatten = numbersSets.flatten()
+//   // println(numbersFlatten[8])
+//    //Looping through 1 Dimension Array
+//    for (number in numbersFlatten){
+//        println(number)
+//    }
+//}
+
+//==================STRING REPRESENTATION==========================================================
+//fun main(args: Array<String>) {
+//    val numbersStrings = listOf("one","two","three","four","five","six")
+//    println(numbersStrings)
+//    println(numbersStrings.joinToString())
+//
+//    val listString = StringBuffer("The list of numbers: ")
+//    println(numbersStrings.joinTo(listString))
+//
+//    println(numbersStrings.joinToString(separator = " | ", prefix = "start: ", postfix = ": end"))
+//
+//    val numbers = (1 .. 100).toList()
+//    println(numbers.joinToString(limit = 15, truncated = "<...>"))
+//
+//    println(numbersStrings.joinToString{ "Element: ${it.uppercase()}"})
+//}
+
+//================================FILTERING=====================================================================
+//fun main(){
+//    val numbers = listOf("one", "two", "three", "four", "five", "six")
+//    val longerThan3 = numbers.filter{it.length > 3}
+//    println(longerThan3)
+//
+//    val numbersMap = mapOf("key 1" to 1, "key 2" to 2, "key 3" to 3, "key 101" to 101)
+//    val filteredMap = numbersMap.filter { it.key.endsWith( "1") && it.value > 100}
+//    println(filteredMap)
+//
+//    val filteredIdx = numbers.filterIndexed {index, value -> (index !=0) && (value.length < 5) }
+//    val filteredNot = numbers.filterNot { it.length <=3 }
+//    println(filteredIdx)
+//    println(filteredNot)
+//
+//    val mixedList = listOf(1, 2, 3, 'A', 'B', 'C', "Hello World", "Isaac", false)
+//    mixedList.filterIsInstance<Char>().forEach {
+//        println(it)
+//    }
+//
+//    //================================= Partition
+//    println("\n")
+//
+//    val (match, rest) = numbers.partition { it.length > 3 }
+//    println(match)
+//    println(rest)
+//
+//    //====================TESTING PREDICATES
+//    println(numbers.any {it.endsWith("e")})
+//    println(numbers.none { it.endsWith("w")})
+//    println(numbers.all {it.length > 1})
+//}
+
+
+//==================================== + AND - OPERATORS =============================================================
 fun main(args: Array<String>) {
-    val name1 = "Isaac"
-    val name2 = "Isaac"  //Structural Equality   //Referential Equality
-
-    println(name1 == name2)
-
+    val numbers = mutableListOf("one", "two", "three", "four", "five")
+    val plusList = numbers + "six"
+    val minusList = numbers  - mutableListOf("three","four")
+    println(plusList)
+    println(minusList)
 }
