@@ -1,6 +1,3 @@
-import kotlin.properties.ReadWriteProperty
-import kotlin.reflect.KProperty
-
 //fun main(args: Array<String>) {
 
 //    var X = 5
@@ -1232,10 +1229,238 @@ import kotlin.reflect.KProperty
 
 
 //==================================== + AND - OPERATORS =============================================================
+//fun main(args: Array<String>) {
+//    val numbers = mutableListOf("one", "two", "three", "four", "five")
+//    val plusList = numbers + "six"
+//    val minusList = numbers  - mutableListOf("three","four")
+//    println(plusList)
+//    println(minusList)
+
+//==================================GROUPING==================================================================
+//fun main(args: Array<String>) {
+//    val numbers = listOf("one", "two", "three", "four", "five")
+//    println(numbers.groupBy { it.first().uppercase() })
+//    println(numbers.groupBy (keySelector = { it.first()}, valueTransform = { it.uppercase() }))
+//}
+
+//===============RETRIEVING COLLECTION PADS================================================================
+
+//fun main (args: Array<String>) {
+//    val numbers = listOf("one", "two", "three", "four", "five", "six")
+//    println(numbers.slice(0..3 ))
+//    println(numbers.slice(0..4 step 2))
+//    println(numbers.slice(setOf(3, 5, 0)))
+//}
+
+//=========================TAKE AND WRAP===================================================================
+
+//fun main (args: Array<String>) {
+//    val numbers = listOf("one", "two", "three", "four", "five", "six")
+//    println(numbers.slice(0..3 ))
+//    println(numbers.slice(0..4 step 2))
+//    println(numbers.slice(setOf(3, 5, 0)))
+//
+//    println("\n")
+//
+//    println(numbers.take(3))
+//    println(numbers.takeLast(3))
+//    println(numbers.drop(1))
+//    println(numbers.dropLast(5))
+//}
+
+//======================USING PREDICATES TO DETERMINE WHAT TO TAKE OR TO DROP=============================
+//fun main (args: Array<String>) {
+//    val numbers = listOf("one", "two", "three", "four", "five", "six")
+//    println(numbers.slice(0..3 ))
+//    println(numbers.slice(0..4 step 2))
+//    println(numbers.slice(setOf(3, 5, 0)))
+//
+//    println("\n")
+//
+//    println(numbers.take(3))
+//    println(numbers.takeLast(3))
+//    println(numbers.drop(1))
+//    println(numbers.dropLast(5))
+//
+//    println("\n")
+//
+//    println(numbers.takeWhile { !it.startsWith("f") })
+//    println(numbers.takeLastWhile { it !="three" })
+//    println(numbers.dropWhile { it.length == 3 }) //six shouldn't be among, but he doesn't know why. ??????
+//    println(numbers.dropLastWhile { it.contains(    "i") })
+//}
+
+//===============================CHUNKED===========================================================
+//fun main (args: Array<String>) {
+//    val numbersStrings = listOf("one", "two", "three", "four", "five", "six")
+//    println(numbersStrings.slice(0..3 ))
+//    println(numbersStrings.slice(0..4 step 2))
+//    println(numbersStrings.slice(setOf(3, 5, 0)))
+//
+//    println("\n")
+//
+//    println(numbersStrings.take(3))
+//    println(numbersStrings.takeLast(3))
+//    println(numbersStrings.drop(1))
+//    println(numbersStrings.dropLast(5))
+//
+//    println("\n")
+//
+//    println(numbersStrings.takeWhile { !it.startsWith("f") })
+//    println(numbersStrings.takeLastWhile { it !="three" })
+//    println(numbersStrings.dropWhile { it.length == 3 }) //six shoudn't be among bu he doesn't know why. ??????
+//    println(numbersStrings.dropLastWhile { it.contains(    "i") })
+//
+//    val numbers = (0 .. 13).toList()
+//    println(numbers.chunked(3))
+//    println(numbers.chunked(3){it.sum()})
+//}
+//======================WINDOWED
+//fun main (args: Array<String>) {
+//    val numbersStrings = listOf("one", "two", "three", "four", "five", "six")
+//    println(numbersStrings.slice(0..3 ))
+//    println(numbersStrings.slice(0..4 step 2))
+//    println(numbersStrings.slice(setOf(3, 5, 0)))
+//
+//    println("\n")
+//
+//    println(numbersStrings.take(3))
+//    println(numbersStrings.takeLast(3))
+//    println(numbersStrings.drop(1))
+//    println(numbersStrings.dropLast(5))
+//
+//    println("\n")
+//
+//    println(numbersStrings.takeWhile { !it.startsWith("f") })
+//    println(numbersStrings.takeLastWhile { it !="three" })
+//    println(numbersStrings.dropWhile { it.length == 3 }) //six shoudn't be among bu he doesn't know why. ??????
+//    println(numbersStrings.dropLastWhile { it.contains(    "i") })
+//
+//    val numbers = (0 .. 13).toList()
+//    println(numbers.chunked(3))
+//    println(numbers.chunked(3){it.sum()})
+//
+//    println("\n")
+//    val numbersStrings2 = numbersStrings
+//    println(numbersStrings2.windowed(3)) //Similar to chunked but more flexible
+//}
+
+//=======================RETRIEVING SINGLE ELEMENT FROM THE THE COLLECTIONS==========================================
+//fun main (args: Array<String>) {
+//    val numbers = listOf("one", "two", "three", "four", "five")
+//    println(numbers.elementAt(3))
+//    println(numbers.first())
+//    println(numbers.last())
+//
+//    println("\n")
+//    println(numbers.first { it.length > 3})
+//    println(numbers.last { it.startsWith("f" ) })
+//    println(numbers.random())
+//    println(numbers.isEmpty())
+//}
+
+//========================AGGREGATE FUNCTION====================================================================
+
+//fun main (args: Array<String>) {
+//    val numbers = listOf(6, 10, 14, 4, 100)
+//    println("The sum is ${numbers.sum()}")
+//    println("The count is ${numbers.count()}")
+//    println("The average is ${numbers.average()}")
+//    println("The max value is ${numbers.max()}")
+//    println("The min value is ${numbers.min()}")
+//}
+//==================================================================================================================
+//fun main (args: Array<String>) {
+//    val numbers = listOf(6, 10, 14, 4, 100)
+//    println("The sum is: ${numbers.sum()}")
+//    println("The count is: ${numbers.count()}")
+//    println("The average is: ${numbers.average()}")
+//    println("The max value is: ${numbers.maxOrNull()}")
+//    println("The min value is: ${numbers.minOrNull()}")
+//    println("The sum is: ${numbers.sumOf { it * 2 }}")
+//}
+
+//=========================ORDERING===================================================================================
+//fun main(args: Array<String>) {
+//    val numbers = mutableListOf<Int>(2, 5, 1, 40, 20, 100, 60)
+//    numbers.sorted().forEach {println(it)}
+//
+//    val laptops = mutableListOf(
+//        laptop("Dell",2021, 4, 600),
+//        laptop("Acer", 2020, 8, 800),
+//        laptop("Apple", 2022, 16, 1000)
+//    )
+//    laptops.sorted().forEach {println(it)}
+//}
+//
+//data class laptop(val brand: String, val year: Int, val ram: Int, val price: Int) : Comparable<laptop> {
+//    override fun compareTo(other: laptop): Int {
+//        return if (this.price > other.price) {
+//            println("In if statement: Swapping ${this.brand} with ${other.brand}")
+//            1
+//            return 1
+//        } else if (this.price < other.price) {
+//            println("In if statement: Swapping ${this.brand} with ${other.brand}")
+//            -1
+//        } else {
+//            0
+//        }
+//    }
+//}
+
+//===============Using Comparator to access other instances
 fun main(args: Array<String>) {
-    val numbers = mutableListOf("one", "two", "three", "four", "five")
-    val plusList = numbers + "six"
-    val minusList = numbers  - mutableListOf("three","four")
-    println(plusList)
-    println(minusList)
+    val numbers = mutableListOf<Int>(2, 5, 1, 40, 20, 100, 60)
+
+    numbers.sorted().forEach { println(it) }
+
+    val laptops = mutableListOf(
+        laptop("Dell", 2021, 4, 600),
+        laptop("Acer", 2020, 8, 800),
+        laptop("Apple", 2022, 16, 1000)
+    )
+
+    println("\n")
+
+    laptops.sorted().forEach { println(it) }
+
+    println("\n")
+
+    laptops.sortedWith(ComparatorRam()).forEach { println(it) }
 }
+
+data class laptop(
+    val brand: String,
+    val year: Int,
+    val ram: Int,
+    val price: Int
+) : Comparable<laptop> {
+
+    override fun compareTo(other: laptop): Int {
+        return if (this.price > other.price) {
+            println("In if statement: Swapping $brand with ${other.brand}")
+            1
+        } else if (this.price < other.price) {
+            println("In if statement: Swapping $brand with ${other.brand}")
+            -1
+        } else {
+            0
+        }
+    }
+}
+
+class ComparatorRam : Comparator<laptop> {
+
+    override fun compare(laptop1: laptop, laptop2: laptop): Int {
+
+        return if (laptop1.ram > laptop2.ram) {
+            -1
+        } else if (laptop1.ram < laptop2.ram) {
+            1
+        } else {
+            0
+        }
+    }
+}
+// you can use many Comparators
+
