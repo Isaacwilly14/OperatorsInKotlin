@@ -1409,58 +1409,79 @@
 //}
 
 //===============Using Comparator to access other instances
+//fun main(args: Array<String>) {
+//    val numbers = mutableListOf<Int>(2, 5, 1, 40, 20, 100, 60)
+//
+//    numbers.sorted().forEach { println(it) }
+//
+//    val laptops = mutableListOf(
+//        laptop("Dell", 2021, 4, 600),
+//        laptop("Acer", 2020, 8, 800),
+//        laptop("Apple", 2022, 16, 1000)
+//    )
+//
+//    println("\n")
+//
+//    laptops.sorted().forEach { println(it) }
+//
+//    println("\n")
+//
+//    laptops.sortedWith(ComparatorRam()).forEach { println(it) }
+//}
+//
+//data class laptop(
+//    val brand: String,
+//    val year: Int,
+//    val ram: Int,
+//    val price: Int
+//) : Comparable<laptop> {
+//
+//    override fun compareTo(other: laptop): Int {
+//        return if (this.price > other.price) {
+//            println("In if statement: Swapping $brand with ${other.brand}")
+//            1
+//        } else if (this.price < other.price) {
+//            println("In if statement: Swapping $brand with ${other.brand}")
+//            -1
+//        } else {
+//            0
+//        }
+//    }
+//}
+//
+//class ComparatorRam : Comparator<laptop> {
+//
+//    override fun compare(laptop1: laptop, laptop2: laptop): Int {
+//
+//        return if (laptop1.ram > laptop2.ram) {
+//            -1
+//        } else if (laptop1.ram < laptop2.ram) {
+//            1
+//        } else {
+//            0
+//        }
+//    }
+//}
+//// you can use many Comparators
+
 fun main(args: Array<String>) {
     val numbers = mutableListOf<Int>(2, 5, 1, 40, 20, 100, 60)
-
     numbers.sorted().forEach { println(it) }
 
     val laptops = mutableListOf(
         laptop("Dell", 2021, 4, 600),
-        laptop("Acer", 2020, 8, 800),
-        laptop("Apple", 2022, 16, 1000)
+        laptop("Acer", 2020, 16, 80),
+        laptop("Apple", 2022, 8, 1000)
+
     )
-
+    laptops.sortedBy {it.price}.forEach {println(it)}
+    //laptops.sortedWith(compareBy { it.price}).forEach { println(it) }
     println("\n")
-
-    laptops.sorted().forEach { println(it) }
-
+   // laptops.sortedWith(compareBy { it.ram}).forEach { println(it) } Shorter way down
+    laptops.sortedBy { it.ram}.forEach {println(it)}
     println("\n")
-
-    laptops.sortedWith(ComparatorRam()).forEach { println(it) }
+    laptops.sortedWith(compareBy<laptop> {it.year}.thenBy {it.price}).forEach{println(it)}
 }
 
-data class laptop(
-    val brand: String,
-    val year: Int,
-    val ram: Int,
-    val price: Int
-) : Comparable<laptop> {
-
-    override fun compareTo(other: laptop): Int {
-        return if (this.price > other.price) {
-            println("In if statement: Swapping $brand with ${other.brand}")
-            1
-        } else if (this.price < other.price) {
-            println("In if statement: Swapping $brand with ${other.brand}")
-            -1
-        } else {
-            0
-        }
-    }
-}
-
-class ComparatorRam : Comparator<laptop> {
-
-    override fun compare(laptop1: laptop, laptop2: laptop): Int {
-
-        return if (laptop1.ram > laptop2.ram) {
-            -1
-        } else if (laptop1.ram < laptop2.ram) {
-            1
-        } else {
-            0
-        }
-    }
-}
-// you can use many Comparators
-
+data class laptop(val brand: String, val year: Int, val ram: Int, val price: Int)//More Sorting criteria
+                                           //the last option is the best   // and concise
