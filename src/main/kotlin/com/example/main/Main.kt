@@ -1,3 +1,4 @@
+
 //fun main(args: Array<String>) {
 
 //    var X = 5
@@ -1464,24 +1465,278 @@
 //}
 //// you can use many Comparators
 
-fun main(args: Array<String>) {
-    val numbers = mutableListOf<Int>(2, 5, 1, 40, 20, 100, 60)
-    numbers.sorted().forEach { println(it) }
+//fun main(args: Array<String>) {
+//    val numbers = mutableListOf<Int>(2, 5, 1, 40, 20, 100, 60)
+//    numbers.sorted().forEach { println(it) }
+//
+//    val laptops = mutableListOf(
+//        laptop("Dell", 2021, 4, 600),
+//        laptop("Acer", 2020, 16, 80),
+//        laptop("Apple", 2022, 8, 1000)
+//
+//    )
+//    laptops.sortedBy {it.price}.forEach {println(it)}
+//    //laptops.sortedWith(compareBy { it.price}).forEach { println(it) }
+//    println("\n")
+//   // laptops.sortedWith(compareBy { it.ram}).forEach { println(it) } Shorter way down
+//    laptops.sortedBy { it.ram}.forEach {println(it)}
+//    println("\n")
+//    laptops.sortedWith(compareBy<laptop> {it.year}.thenBy {it.price}).forEach{println(it)}
+//    //can add more thenBy
+//}
+//
+//data class laptop(val brand: String, val year: Int, val ram: Int, val price: Int)//More Sorting criteria
+//                                           //the last option is the best   // and concise
 
-    val laptops = mutableListOf(
-        laptop("Dell", 2021, 4, 600),
-        laptop("Acer", 2020, 16, 80),
-        laptop("Apple", 2022, 8, 1000)
+//========================BINARY SEARCH========================================================
+// First Linear Search ========
+//fun main (args: Array<String>) {
+//    println(searchElement(27, mutableListOf(1,2,3,4,5,6,7,8,9,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30)))
+//
+//}
+//
+//private fun searchElement(searchElement: Int, numbers: MutableList<Int>): Int {
+//    var i = 0
+//    for (number in numbers) {
+//        i++
+//        println("Searched number: $i")
+//        if (number == searchElement) {
+//            return number
+//        }
+//    }
+//    return -1
+//}
 
+//=============================Binary Search
+//fun main (args: Array<String>) {
+//    println(searchElement(27, mutableListOf(1,2,3,4,5,6,7,8,9,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30)))
+//
+//}
+//
+//private fun searchElement(searchedElement: Int, numbers: MutableList<Int>)
+//= numbers[numbers.binarySearch(27)] //: Int { Even shorter
+//    var low = 0
+//    var high = numbers.size -1
+//
+//    var i = 0
+//    while (low <= high) {
+//        i++
+//        println("Searched number: $i")
+//        val mid = (low + high) / 2
+//        val cmp = numbers[mid].compareTo(searchedElement)
+//
+//        if (cmp<0) {
+//            low = mid + 1
+//        } else if (cmp > 0) {
+//            low = mid - 1
+//        } else {
+//            return numbers [mid]
+//        }
+//    }
+//    return -1
+
+ //   return numbers[numbers.binarySearch(27)] //Shorter way of writing the above
+
+
+//}
+
+//=======================================GENERICS======================================================
+
+//fun main(args: Array<String>) {
+//
+//    val footballPlayer = FootballPlayer("Football player 1")
+//    val footballPlayer2 = FootballPlayer("Football player 2")
+//
+//    val baseballPlayer = BaseballPlayer("Baseball Player 1")
+//    val baseballPlayer2 = BaseballPlayer("Baseball Player 2")
+//
+//    val footballTeam = Team("Football team", mutableListOf(footballPlayer))
+//    footballTeam.addPlayers(footballPlayer2)
+//
+//    val baseballTeam = Team("Baseball team", mutableListOf(baseballPlayer))
+//    baseballTeam.addPlayers(baseballPlayer2)
+//
+//}
+//
+//class Team<T>(val name: String, val players: MutableList<T>) {
+//
+//    fun addPlayers(player: T) {
+//        if (players.contains(player)) {
+//            println("Player: ${(player as Player).name} is already in the team ${this.name}")
+//        } else {
+//            players.add(player)
+//            println("Player: ${(player as Player).name} was added to the team ${this.name}")
+//        }
+//    }
+//}
+//open class Player(val name: String)
+//
+//class FootballPlayer(name: String) : Player(name)
+//class BaseballPlayer(name: String) : Player(name)
+
+//==============================Upper Bounds:
+
+//fun main(args: Array<String>) {
+//
+//    val footballPlayer = FootballPlayer("Football player 1")
+//    val footballPlayer2 = FootballPlayer("Football player 2")
+//
+//    val baseballPlayer = BaseballPlayer("Baseball Player 1")
+//    val baseballPlayer2 = BaseballPlayer("Baseball Player 2")
+//
+//    val footballTeam = Team("Football team", mutableListOf(footballPlayer))
+//    footballTeam.addPlayers(footballPlayer2)
+//
+//    val baseballTeam = Team("Baseball team", mutableListOf(baseballPlayer))
+//    baseballTeam.addPlayers(baseballPlayer2)
+//
+//    val gamesPlayer = Team<GamesPlayer>("Games Team", mutableListOf())
+//
+//}
+//
+//class Team<T: Player>(val name: String, val players: MutableList<T>) {
+//
+//    fun addPlayers(player: T) {
+//        if (players.contains(player)) {
+//            println("Player: ${player.name} is already in the team ${this.name}")
+//        } else {
+//            players.add(player)
+//            println("Player: ${player.name} was added to the team ${this.name}")
+//        }
+//    }
+//}
+//open class Player(val name: String)
+//
+//class FootballPlayer(name: String) : Player(name)
+//class BaseballPlayer(name: String) : Player(name)
+//class GamesPlayer(name: String) : Player(name)
+
+//=================================COVARIANCE AND CONTRAVARIANCE=================== Not Clear to me
+//class Team<T : Player>(
+//    val name: String,
+//    private val players: MutableList<in T>
+//) {
+//
+//    fun addPlayers(player: T) {
+//        if (players.contains(player)) {
+//            println("Player: ${player.name} is already in the team $name")
+//        } else {
+//            players.add(player)
+//            println("Player: ${player.name} was added to the team $name")
+//        }
+//    }
+//}
+//
+//open class Player(val name: String)
+//
+//class FootballPlayer(name: String) : Player(name)
+//
+//class BaseballPlayer(name: String) : Player(name)
+//
+//open class GamesPlayer(name: String) : Player(name)
+//
+//class CounterStrikePlayer(name: String) : GamesPlayer(name)
+//
+//fun main(args: Array<String>) {
+//
+//    val footballTeam = Team<Player>(
+//        name = "Football Team",
+//        players = mutableListOf(
+//            FootballPlayer("Player 1"),
+//            FootballPlayer("Player 2")
+//        )
+//    )
+//
+//    val gamesTeam = Team<CounterStrikePlayer>(
+//        name = "Games Team",
+//        players = mutableListOf<GamesPlayer>(
+//            CounterStrikePlayer("Player 1"),
+//            CounterStrikePlayer("Player 2")
+//        )
+//    )
+//
+//    gamesTeam.addPlayers(CounterStrikePlayer("Player 3"))
+//
+//
+//        // Type erasers: Read more about them.
+//}
+
+//==Reification  Read more about it.
+
+//open class Player(val name: String)
+//class FootballPlayer(name: String) : Player(name)
+//class BaseballPlayer(name: String) : Player(name)
+//open class GamePlayer(name: String) : Player(name)
+//class CounterStrikePlayer(name: String) : GamePlayer(name)
+//
+//fun main(args: Array<String>) {
+//
+//    val mixedList = mutableListOf(1, 2, 360, 'a', 'b', 'c', "hello", "world")
+//
+//    val specificList = getSpecificTypes<Char>(mixedList)
+//
+//    for (element in specificList) {
+//        println(element)
+//    }
+//}
+//
+//inline fun <reified T> getSpecificTypes(list: List<Any>): List<T> {
+//
+//    val specificList = mutableListOf<T>()
+//
+//    for (element in list) {
+//        if (element is T) {
+//            specificList.add(element)
+//        }
+//    }
+//
+//    return specificList
+//}
+//
+//// Read more about the upper bound., multiple upper bounds.
+
+
+
+
+//=============================ACCESS MODIFIERS=============================================================
+
+//There are 4 main access modifiers
+//1. Internal  = Can be accessed in the same module
+//2. Public = Can be used anywhere //By default all classes are public, no need to be declared
+//3. Private =   Can be accessed in the same file
+//4. Protected = Can be used inside classes
+
+//fun main() {
+//    val user = User()
+//
+//    user.firstName = "Isaac"
+//    user.lastName = "Tumusiime"
+//
+//}
+//
+//class User {
+//    var firstName: String = ""
+//    var lastName: String = ""
+//}
+
+
+//=======================PACKAGES AND IMPORTS==============================================================
+package com.example.main
+
+import com.example.classes.*
+
+
+fun main() {
+    val footballTeam = Team<Player>(
+        "Football Team",
+        mutableListOf(
+            FootballPlayer("Player 1"),
+            FootballPlayer("Player 2")
+        )
     )
-    laptops.sortedBy {it.price}.forEach {println(it)}
-    //laptops.sortedWith(compareBy { it.price}).forEach { println(it) }
-    println("\n")
-   // laptops.sortedWith(compareBy { it.ram}).forEach { println(it) } Shorter way down
-    laptops.sortedBy { it.ram}.forEach {println(it)}
-    println("\n")
-    laptops.sortedWith(compareBy<laptop> {it.year}.thenBy {it.price}).forEach{println(it)}
+    val gamesTeam = Team<GamesPlayer>("Games Team",
+        mutableListOf<GamesPlayer>(GamesPlayer("Player 1"),
+            GamesPlayer("Player 2")
+        )
+    )
 }
-
-data class laptop(val brand: String, val year: Int, val ram: Int, val price: Int)//More Sorting criteria
-                                           //the last option is the best   // and concise
