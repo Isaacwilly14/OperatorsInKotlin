@@ -1464,24 +1464,108 @@
 //}
 //// you can use many Comparators
 
+//fun main(args: Array<String>) {
+//    val numbers = mutableListOf<Int>(2, 5, 1, 40, 20, 100, 60)
+//    numbers.sorted().forEach { println(it) }
+//
+//    val laptops = mutableListOf(
+//        laptop("Dell", 2021, 4, 600),
+//        laptop("Acer", 2020, 16, 80),
+//        laptop("Apple", 2022, 8, 1000)
+//
+//    )
+//    laptops.sortedBy {it.price}.forEach {println(it)}
+//    //laptops.sortedWith(compareBy { it.price}).forEach { println(it) }
+//    println("\n")
+//   // laptops.sortedWith(compareBy { it.ram}).forEach { println(it) } Shorter way down
+//    laptops.sortedBy { it.ram}.forEach {println(it)}
+//    println("\n")
+//    laptops.sortedWith(compareBy<laptop> {it.year}.thenBy {it.price}).forEach{println(it)}
+//    //can add more thenBy
+//}
+//
+//data class laptop(val brand: String, val year: Int, val ram: Int, val price: Int)//More Sorting criteria
+//                                           //the last option is the best   // and concise
+
+//========================BINARY SEARCH========================================================
+// First Linear Search ========
+//fun main (args: Array<String>) {
+//    println(searchElement(27, mutableListOf(1,2,3,4,5,6,7,8,9,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30)))
+//
+//}
+//
+//private fun searchElement(searchElement: Int, numbers: MutableList<Int>): Int {
+//    var i = 0
+//    for (number in numbers) {
+//        i++
+//        println("Searched number: $i")
+//        if (number == searchElement) {
+//            return number
+//        }
+//    }
+//    return -1
+//}
+
+//=============================Binary Search
+//fun main (args: Array<String>) {
+//    println(searchElement(27, mutableListOf(1,2,3,4,5,6,7,8,9,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30)))
+//
+//}
+//
+//private fun searchElement(searchedElement: Int, numbers: MutableList<Int>)
+//= numbers[numbers.binarySearch(27)] //: Int { Even shorter
+//    var low = 0
+//    var high = numbers.size -1
+//
+//    var i = 0
+//    while (low <= high) {
+//        i++
+//        println("Searched number: $i")
+//        val mid = (low + high) / 2
+//        val cmp = numbers[mid].compareTo(searchedElement)
+//
+//        if (cmp<0) {
+//            low = mid + 1
+//        } else if (cmp > 0) {
+//            low = mid - 1
+//        } else {
+//            return numbers [mid]
+//        }
+//    }
+//    return -1
+
+ //   return numbers[numbers.binarySearch(27)] //Shorter way of writing the above
+
+
+//}
+
+//=======================================GENERICS======================================================
+
 fun main(args: Array<String>) {
-    val numbers = mutableListOf<Int>(2, 5, 1, 40, 20, 100, 60)
-    numbers.sorted().forEach { println(it) }
 
-    val laptops = mutableListOf(
-        laptop("Dell", 2021, 4, 600),
-        laptop("Acer", 2020, 16, 80),
-        laptop("Apple", 2022, 8, 1000)
+    val footballPlayer = FootballPlayer("Football player 1")
+    val footballPlayer2 = FootballPlayer("Football player 2")
 
-    )
-    laptops.sortedBy {it.price}.forEach {println(it)}
-    //laptops.sortedWith(compareBy { it.price}).forEach { println(it) }
-    println("\n")
-   // laptops.sortedWith(compareBy { it.ram}).forEach { println(it) } Shorter way down
-    laptops.sortedBy { it.ram}.forEach {println(it)}
-    println("\n")
-    laptops.sortedWith(compareBy<laptop> {it.year}.thenBy {it.price}).forEach{println(it)}
+    val baseballPlayer = BaseballPlayer("Baseball Player 1")
+    val baseballPlayer2 = BaseballPlayer("Baseball Player 2")
+
+    val footballTeam = Team<FootballPlayer>("Football team", mutableListOf(footballPlayer))
+    footballTeam.addPlayers(footballPlayer2)
+
 }
 
-data class laptop(val brand: String, val year: Int, val ram: Int, val price: Int)//More Sorting criteria
-                                           //the last option is the best   // and concise
+class Team<T>(val name: String, val players: MutableList<T>) {
+
+    fun addPlayers(player: T) {
+        if (players.contains(player)) {
+            println("Player: ${(player as Player).name} is already in the team ${this.name}")
+        } else {
+            players.add(player)
+            println("Player: ${(player as Player).name} was added to the team ${this.name}")
+        }
+    }
+}
+open class Player(val name: String)
+
+class FootballPlayer(name: String) : Player(name)
+class BaseballPlayer(name: String) : Player(name)
